@@ -67,41 +67,41 @@
 
 ## 🏗️ System Architecture
 
-```mermaid
-graph TD
-    A[SMG Unified Portal] --> B[Employee Portal]
-    A --> C[Admin Portal]
-    A --> D[Super Admin Portal]
-    A --> E[Department Portals]
-    
-    B --> B1[Dashboard]
-    B --> B2[Profile Management]
-    B --> B3[Leave Requests]
-    B --> B4[Attendance Tracking]
-    
-    C --> C1[Employee Management]
-    C --> C2[Department Oversight]
-    C --> C3[Reports & Analytics]
-    C --> C4[System Configuration]
-    
-    D --> D1[Global System Control]
-    D --> D2[User Role Management]
-    D --> D3[Security Settings]
-    D --> D4[Audit Logs]
-    
-    E --> E1[Reception]
-    E --> E2[HR]
-    E --> E3[Finance]
-    E --> E4[Time Office]
-    E --> E5[Canteen]
-    E --> E6[Events]
-    E --> E7[Technician]
-    E --> E8[Assembly]
-    E --> E9[Marketing]
-    E --> E10[Transport]
-    E --> E11[SIM Allocation]
-    E --> E12[Uniform]
-    E --> E13[Guest House]
+```
+📦 SMG Unified Portal
+│
+├── 👤 Employee Portal
+│   ├── 📊 Dashboard
+│   ├── 👨‍💼 Profile Management
+│   ├── 🏖️ Leave Requests
+│   └── ⏰ Attendance Tracking
+│
+├── 👨‍💼 Admin Portal
+│   ├── 👥 Employee Management
+│   ├── 🏢 Department Oversight
+│   ├── 📈 Reports & Analytics
+│   └── ⚙️ System Configuration
+│
+├── ⚡ Super Admin Portal
+│   ├── 🌐 Global System Control
+│   ├── 🔑 User Role Management
+│   ├── 🔒 Security Settings
+│   └── 📋 Audit Logs
+│
+└── 🏢 Department Portals (13)
+    ├── 🚪 Reception
+    ├── 👔 Human Resources
+    ├── 💰 Finance
+    ├── ⏱️ Time Office
+    ├── 🍽️ Canteen
+    ├── 🎉 Events
+    ├── 🔧 Technician
+    ├── 🏭 Assembly
+    ├── 📢 Marketing
+    ├── 🚌 Transport (P&A)
+    ├── 📱 SIM Allocation (P&A)
+    ├── 👕 Uniform (P&A)
+    └── 🏨 Guest House (P&A)
 ```
 
 ### 📦 Department Portals
