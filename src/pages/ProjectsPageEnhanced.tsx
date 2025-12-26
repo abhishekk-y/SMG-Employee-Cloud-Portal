@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  Briefcase, 
-  Clock, 
-  Users, 
+import {
+  Briefcase,
+  Clock,
+  Users,
   CheckCircle,
   AlertCircle,
   Calendar,
@@ -28,15 +28,15 @@ export const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
-    { 
-      id: 1, 
-      name: 'Assembly Line Optimization', 
-      status: 'In Progress', 
-      progress: 65, 
-      team: 8, 
+    {
+      id: 1,
+      name: 'Assembly Line Optimization',
+      status: 'In Progress',
+      progress: 65,
+      team: 8,
       deadline: '2024-12-30',
       priority: 'High',
-      tasks: { total: 24, completed: 16 },
+      tasksSummary: { total: 24, completed: 16 },
       description: 'Optimization of assembly line processes to improve efficiency and reduce production time by 20%',
       startDate: '2024-11-01',
       manager: 'Priya Sharma',
@@ -76,15 +76,15 @@ export const ProjectsPage = () => {
         { id: 6, name: 'Quality Testing', status: 'Pending', assignee: 'Vikram Singh', dueDate: '2024-12-28' }
       ]
     },
-    { 
-      id: 2, 
-      name: 'Quality Control Enhancement', 
-      status: 'In Progress', 
-      progress: 45, 
-      team: 5, 
+    {
+      id: 2,
+      name: 'Quality Control Enhancement',
+      status: 'In Progress',
+      progress: 45,
+      team: 5,
       deadline: '2024-12-25',
       priority: 'Medium',
-      tasks: { total: 18, completed: 8 },
+      tasksSummary: { total: 18, completed: 8 },
       description: 'Implementation of advanced quality control measures and automated inspection systems',
       startDate: '2024-10-15',
       manager: 'Vikram Singh',
@@ -115,15 +115,15 @@ export const ProjectsPage = () => {
       ],
       tasks: []
     },
-    { 
-      id: 3, 
-      name: 'Safety Protocol Update', 
-      status: 'Completed', 
-      progress: 100, 
-      team: 6, 
+    {
+      id: 3,
+      name: 'Safety Protocol Update',
+      status: 'Completed',
+      progress: 100,
+      team: 6,
       deadline: '2024-12-10',
       priority: 'High',
-      tasks: { total: 12, completed: 12 },
+      tasksSummary: { total: 12, completed: 12 },
       description: 'Complete overhaul of workplace safety protocols and emergency response procedures',
       startDate: '2024-09-01',
       manager: 'Rohit Verma',
@@ -153,15 +153,15 @@ export const ProjectsPage = () => {
       ],
       tasks: []
     },
-    { 
-      id: 4, 
-      name: 'Inventory Management System', 
-      status: 'Planning', 
-      progress: 15, 
-      team: 4, 
+    {
+      id: 4,
+      name: 'Inventory Management System',
+      status: 'Planning',
+      progress: 15,
+      team: 4,
       deadline: '2025-01-15',
       priority: 'Low',
-      tasks: { total: 20, completed: 3 },
+      tasksSummary: { total: 20, completed: 3 },
       description: 'Digital transformation of inventory tracking and warehouse management processes',
       startDate: '2024-12-01',
       manager: 'Suresh Reddy',
@@ -191,12 +191,12 @@ export const ProjectsPage = () => {
     }
   ];
 
-  const filteredProjects = filterStatus === 'all' 
-    ? projects 
+  const filteredProjects = filterStatus === 'all'
+    ? projects
     : projects.filter(p => p.status.toLowerCase() === filterStatus);
 
   const getStatusColor = (status) => {
-    switch(status) {
+    switch (status) {
       case 'Completed': return 'bg-[#05CD99] text-white';
       case 'In Progress': return 'bg-[#0B4DA2] text-white';
       case 'Planning': return 'bg-[#FFB547] text-white';
@@ -205,7 +205,7 @@ export const ProjectsPage = () => {
   };
 
   const getPriorityColor = (priority) => {
-    switch(priority) {
+    switch (priority) {
       case 'High': return 'text-[#EE5D50] bg-red-50';
       case 'Medium': return 'text-[#FFB547] bg-orange-50';
       case 'Low': return 'text-[#05CD99] bg-green-50';
@@ -282,11 +282,10 @@ export const ProjectsPage = () => {
               <button
                 key={status}
                 onClick={() => setFilterStatus(status)}
-                className={`px-4 py-2 rounded-xl font-bold text-sm transition-all ${
-                  filterStatus === status
+                className={`px-4 py-2 rounded-xl font-bold text-sm transition-all ${filterStatus === status
                     ? 'bg-[#0B4DA2] text-white'
                     : 'bg-gray-100 text-[#A3AED0] hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {status.charAt(0).toUpperCase() + status.slice(1)}
               </button>
@@ -298,8 +297,8 @@ export const ProjectsPage = () => {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredProjects.map((project) => (
-          <div 
-            key={project.id} 
+          <div
+            key={project.id}
             className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all cursor-pointer hover:border-[#0B4DA2] hover:-translate-y-1"
             onClick={() => setSelectedProject(project)}
           >
@@ -315,7 +314,7 @@ export const ProjectsPage = () => {
                   </span>
                 </div>
               </div>
-              <button 
+              <button
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -333,7 +332,7 @@ export const ProjectsPage = () => {
                 <span className="text-sm font-bold text-[#1B254B]">{project.progress}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
+                <div
                   className="bg-gradient-to-r from-[#0B4DA2] to-[#042A5B] h-2 rounded-full transition-all duration-500"
                   style={{ width: `${project.progress}%` }}
                 />
@@ -354,7 +353,7 @@ export const ProjectsPage = () => {
                   <CheckCircle size={16} />
                   <span className="text-xs">Tasks</span>
                 </div>
-                <p className="font-bold text-[#1B254B]">{project.tasks.completed}/{project.tasks.total}</p>
+                <p className="font-bold text-[#1B254B]">{project.tasksSummary.completed}/{project.tasksSummary.total}</p>
               </div>
               <div className="text-center">
                 <div className="flex items-center justify-center gap-1 text-[#A3AED0] mb-1">
@@ -378,18 +377,16 @@ export const ProjectsPage = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h2 className="text-2xl font-bold">{selectedProject.name}</h2>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-                      selectedProject.status === 'Completed' ? 'bg-green-500 text-white' :
-                      selectedProject.status === 'In Progress' ? 'bg-blue-500 text-white' :
-                      'bg-yellow-500 text-white'
-                    }`}>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${selectedProject.status === 'Completed' ? 'bg-green-500 text-white' :
+                        selectedProject.status === 'In Progress' ? 'bg-blue-500 text-white' :
+                          'bg-yellow-500 text-white'
+                      }`}>
                       {selectedProject.status}
                     </span>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-                      selectedProject.priority === 'High' ? 'bg-red-500 text-white' :
-                      selectedProject.priority === 'Medium' ? 'bg-orange-500 text-white' :
-                      'bg-green-500 text-white'
-                    }`}>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${selectedProject.priority === 'High' ? 'bg-red-500 text-white' :
+                        selectedProject.priority === 'Medium' ? 'bg-orange-500 text-white' :
+                          'bg-green-500 text-white'
+                      }`}>
                       {selectedProject.priority} Priority
                     </span>
                   </div>
@@ -417,7 +414,7 @@ export const ProjectsPage = () => {
                   <X size={24} />
                 </button>
               </div>
-              
+
               {/* Progress Bar */}
               <div className="mt-4">
                 <div className="flex items-center justify-between mb-2">
@@ -489,11 +486,10 @@ export const ProjectsPage = () => {
                     <div key={idx} className="bg-white p-4 rounded-xl border border-gray-200">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3 flex-1">
-                          <div className={`w-3 h-3 rounded-full flex-shrink-0 ${
-                            milestone.status === 'Completed' ? 'bg-green-500' :
-                            milestone.status === 'In Progress' ? 'bg-blue-500' :
-                            'bg-gray-300'
-                          }`}></div>
+                          <div className={`w-3 h-3 rounded-full flex-shrink-0 ${milestone.status === 'Completed' ? 'bg-green-500' :
+                              milestone.status === 'In Progress' ? 'bg-blue-500' :
+                                'bg-gray-300'
+                            }`}></div>
                           <div className="flex-1">
                             <p className="font-bold text-[#1B254B] text-sm">{milestone.name}</p>
                             <p className="text-xs text-gray-500 mt-1">{milestone.description}</p>
@@ -501,22 +497,20 @@ export const ProjectsPage = () => {
                           </div>
                         </div>
                         <div className="flex items-center gap-3 ml-4">
-                          <span className={`text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap ${
-                            milestone.status === 'Completed' ? 'bg-green-100 text-green-700' :
-                            milestone.status === 'In Progress' ? 'bg-blue-100 text-blue-700' :
-                            'bg-gray-100 text-gray-700'
-                          }`}>
+                          <span className={`text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap ${milestone.status === 'Completed' ? 'bg-green-100 text-green-700' :
+                              milestone.status === 'In Progress' ? 'bg-blue-100 text-blue-700' :
+                                'bg-gray-100 text-gray-700'
+                            }`}>
                             {milestone.status}
                           </span>
                           <span className="text-sm font-bold text-[#1B254B]">{milestone.completion}%</span>
                         </div>
                       </div>
                       <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                        <div className={`h-full ${
-                          milestone.status === 'Completed' ? 'bg-green-500' :
-                          milestone.status === 'In Progress' ? 'bg-blue-500' :
-                          'bg-gray-300'
-                        }`} style={{ width: `${milestone.completion}%` }}></div>
+                        <div className={`h-full ${milestone.status === 'Completed' ? 'bg-green-500' :
+                            milestone.status === 'In Progress' ? 'bg-blue-500' :
+                              'bg-gray-300'
+                          }`} style={{ width: `${milestone.completion}%` }}></div>
                       </div>
                     </div>
                   ))}
@@ -541,12 +535,11 @@ export const ProjectsPage = () => {
                           <p className="text-xs text-gray-500">{asset.type} • Qty: {asset.quantity}</p>
                         </div>
                       </div>
-                      <span className={`text-xs font-bold px-2 py-1 rounded ${
-                        asset.status === 'Active' ? 'bg-green-100 text-green-700' :
-                        asset.status === 'In Transit' ? 'bg-yellow-100 text-yellow-700' :
-                        asset.status === 'Ordered' ? 'bg-orange-100 text-orange-700' :
-                        'bg-blue-100 text-blue-700'
-                      }`}>
+                      <span className={`text-xs font-bold px-2 py-1 rounded ${asset.status === 'Active' ? 'bg-green-100 text-green-700' :
+                          asset.status === 'In Transit' ? 'bg-yellow-100 text-yellow-700' :
+                            asset.status === 'Ordered' ? 'bg-orange-100 text-orange-700' :
+                              'bg-blue-100 text-blue-700'
+                        }`}>
                         {asset.status}
                       </span>
                     </div>
@@ -586,11 +579,10 @@ export const ProjectsPage = () => {
                     {selectedProject.tasks.map((task) => (
                       <div key={task.id} className="bg-white p-3 rounded-xl flex items-center justify-between border border-gray-200">
                         <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${
-                            task.status === 'Completed' ? 'bg-green-500' :
-                            task.status === 'In Progress' ? 'bg-blue-500' :
-                            'bg-gray-300'
-                          }`}></div>
+                          <div className={`w-2 h-2 rounded-full ${task.status === 'Completed' ? 'bg-green-500' :
+                              task.status === 'In Progress' ? 'bg-blue-500' :
+                                'bg-gray-300'
+                            }`}></div>
                           <div>
                             <p className="font-bold text-[#1B254B] text-sm">{task.name}</p>
                             <p className="text-xs text-gray-500">Assigned to: {task.assignee}</p>
@@ -598,11 +590,10 @@ export const ProjectsPage = () => {
                         </div>
                         <div className="flex items-center gap-3">
                           <span className="text-xs text-gray-500">{task.dueDate}</span>
-                          <span className={`text-xs font-bold px-2 py-1 rounded ${
-                            task.status === 'Completed' ? 'bg-green-100 text-green-700' :
-                            task.status === 'In Progress' ? 'bg-blue-100 text-blue-700' :
-                            'bg-gray-100 text-gray-700'
-                          }`}>
+                          <span className={`text-xs font-bold px-2 py-1 rounded ${task.status === 'Completed' ? 'bg-green-100 text-green-700' :
+                              task.status === 'In Progress' ? 'bg-blue-100 text-blue-700' :
+                                'bg-gray-100 text-gray-700'
+                            }`}>
                             {task.status}
                           </span>
                         </div>

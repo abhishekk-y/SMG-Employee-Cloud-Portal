@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: smg-employee-portal
+    runtime: node
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: VITE_ENABLE_ANALYTICS
+        value: "true"
+    healthCheckPath: /
