@@ -1,15 +1,18 @@
 services:
   - type: web
     name: smg-employee-portal
-    runtime: node
-    region: singapore
-    plan: free
-    branch: main
+    runtime: static
     buildCommand: npm install && npm run build
-    startCommand: npm run preview
-    envVars:
-      - key: NODE_VERSION
-        value: 18
-      - key: VITE_ENABLE_ANALYTICS
-        value: "true"
-    healthCheckPath: /
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
